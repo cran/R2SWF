@@ -1,0 +1,2 @@
+PKG_CPPFLAGS = -I. -I/usr/include/freetype2 -I/usr/include/libxml2 -I/usr/include/libxml2
+PKG_LIBS = -L/usr/lib -lxslt -lxml2 -lexslt -lxml2 -lfreetype -lz -lpng -lz -lm
