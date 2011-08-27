@@ -1,2 +1,30 @@
-PKG_CPPFLAGS = -I. -I/usr/include/freetype2 -I/usr/include/libxml2 -I/usr/include/libxml2
-PKG_LIBS = -L/usr/lib -lxslt -lxml2 -lexslt -lxml2 -lfreetype -lz -lpng -lz -lm
+PKG_CPPFLAGS = -I./zlib -I./libpng -I./libming -I.
+PKG_LIBS = -L./libming -lming -L./libpng -lpng -L./zlib -lz
+
+export CC
+export AR
+export CPICFLAGS
+
+.PHONY: all zlib libpng libming clean
+
+all: $(SHLIB)
+
+$(SHLIB): zlib/libz.a libpng/libpng.a libming/libming.a
+
+zlib/libz.a:
+	cd zlib && $(MAKE) all
+
+libpng/libpng.a:
+	cd libpng && $(MAKE) all
+
+libming/libming.a:
+	cd libming && $(MAKE) all
+
+clean:
+	$(RM) *.o
+	$(RM) *.dll
+	$(RM) *.so
+	cd zlib && $(MAKE) clean
+	cd libpng && $(MAKE) clean
+	cd libming && $(MAKE) clean
+

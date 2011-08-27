@@ -1,4 +1,4 @@
-export(get_image_size)
-export(image2swf)
 export(dev2swf)
+export(image2swf)
+export(svg2swf)
 export(swf2html)
