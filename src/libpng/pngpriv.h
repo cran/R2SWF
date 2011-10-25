@@ -37,12 +37,16 @@
  * Windows/Visual Studio) there is no effect; the OS specific tests below are
  * still required (as of 2011-05-02.)
  */
-#define _POSIX_SOURCE 1 /* Just the POSIX 1003.1 and C89 APIs */
+/* #define _POSIX_SOURCE 1 */ /* Just the POSIX 1003.1 and C89 APIs */
+/* Commented by Yixuan Qiu, thanks Prof. Ripley */
 
 /* This is required for the definition of abort(), used as a last ditch
  * error handler when all else fails.
  */
 #include <stdlib.h>
+/* Added by Yixuan Qiu */
+/* Use error handler in R */
+#include <R_ext/Error.h>
 
 #define PNGLIB_BUILD
 #ifdef PNG_USER_CONFIG
@@ -215,12 +219,20 @@ typedef PNG_CONST png_uint_16p FAR * png_const_uint_16pp;
  */
 
 /* Memory model/platform independent fns */
+/* Commented by Yixuan Qiu */
+/* R-ext does not allow abort() */
+/*
 #ifndef PNG_ABORT
 #  ifdef _WINDOWS_
 #    define PNG_ABORT() ExitProcess(0)
 #  else
 #    define PNG_ABORT() abort()
 #  endif
+#endif
+*/
+void PNG_ABORT_WITH_R_HANDLER();
+#ifndef PNG_ABORT
+#    define PNG_ABORT() PNG_ABORT_WITH_R_HANDLER()
 #endif
 
 #ifdef USE_FAR_KEYWORD
