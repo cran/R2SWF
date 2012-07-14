@@ -1,41 +1,42 @@
-##' Embed the SWF file into an HTML page
-##' 
-##' This function will generate an HTML file to display the Flash animation.
-##'
-##' @param swf.file the path of the SWF file
-##' @param output the output path of the HTML file
-##' @param width width of the Flash
-##' @param height height of the Flash
-##' @return The output path of the HTML file.
-##' @export 
-##' @author Yihui Xie <\url{http://yihui.name}>
-##' @examples
-##' output = dev2swf({
-##'   for (i in 1:10) plot(runif(20), ylim = c(0, 1))
-##' }, output = 'test.swf')
-##' swf2html(output)
-swf2html = function(swf.file, output, width = 480, height = 480) {
-    if (missing(output)) output = paste(sub('\\.swf$', '', swf.file), '.html', sep = '')
-    cat(sprintf('
+#' Embed the SWF file into an HTML page
+#'
+#' This function will generate an HTML file to display the Flash animation.
+#' @param swf.file the path of the SWF file
+#' @param output the output path of the HTML file; by default \file{foo.swf}
+#'   produces \code{foo.html} if not specified (set \code{FALSE} so that no file
+#'   will be written)
+#' @param width width of the Flash
+#' @param height height of the Flash
+#' @param fragment whether to produce an HTML fragment only
+#' @return The HTML code as a character string.
+#' @export
+#' @author Yihui Xie <\url{http://yihui.name}>
+#' @examples
+#' output = dev2swf({
+#'   for (i in 1:10) plot(runif(20), ylim = c(0, 1))
+#' }, output = 'test.swf')
+#' swf2html(output)
+swf2html = function(swf.file, output, width = 480, height = 480, fragment = FALSE) {
+  if (missing(output)) output = sub('\\.swf$', '.html', swf.file)
+  size = paste(c(sprintf('width="%s"', width), sprintf('height="%s"', height)), collapse = ' ')
+  html = sprintf('<embed %s name="plugin" src="%s" type="application/x-shockwave-flash">',
+                 size, swf.file)
+  if (!fragment) html = paste('
 <html>
 <head>
-  <title>%s</title>
+  <title>Flash animations made by the R2SWF package</title>
 </head>
 <body>
 <div align="center">
-', paste('Flash Animation by R2SWF', packageVersion('R2SWF'))), file = output)
-    cat(sprintf('<object style="width: %spx; height: %spx;" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="%s" height="%s" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0">
-  <param name="src" value="file:///%s" />
-  <embed style="width: %spx; height: %spx;" type="application/x-shockwave-flash" width="%s" height="%s" src="file:///%s"></embed>
-</object>',
-            width, height, width, height, swf.file,
-            width, height, width, height, swf.file),
-        file = output, append = TRUE)
-    cat('
+', html, '
 </div>
 </body>
 </html>
-', file = output, append = TRUE)
+')
+  if (!identical(output, FALSE)) cat(html, file = output)
+  if (is.character(output) && file.exists(output)) {
+    message('output at', normalizePath(output))
     if (interactive()) try(browseURL(output), silent = TRUE)
-    invisible(output)
+  }
+  invisible(html)
 }
