@@ -1,6 +1,6 @@
-#include <libming.h>
-#include <stdlib.h>
+#include <ming.h>
 #include "rsvg-path.h"
+#include "swfArray.h"
 
 #include <R.h>
 #include <Rdefines.h>
@@ -47,17 +47,17 @@ void SWFShape_setStrokeStyle(SWFShape s, StrokeStyle *ty)
 }
 
 /* Set the fill style of a shape object */
-void SWFShape_setFillStyle(SWFShape s, FillStyle *ty)
+SWFFillStyle SWFShape_setFillStyle(SWFShape s, FillStyle *ty)
 {
-    SWFFill f = SWFShape_addSolidFill(s, ty->red, ty->green,
-                                      ty->blue, ty->alpha);
-    SWFShape_setRightFill(s, f);
-    destroySWFFill(f);
+    SWFFillStyle fill;
+    fill = newSWFSolidFillStyle(ty->red, ty->green, ty->blue, ty->alpha);
+    SWFShape_setRightFillStyle(s, fill);
+    return fill;
 }
 
 /* Set the stroke and fill style of a shape object
  * from an R character vector representing the style values. */
-void SWFShape_setStyleFromR(SWFShape s, SEXP style, StrokeStyle *sstyle,
+SWFFillStyle SWFShape_setStyleFromR(SWFShape s, SEXP style, StrokeStyle *sstyle,
                             FillStyle *fstyle)
 {
     const char *stroke_width = CHAR(STRING_ELT(style, STYIND_STROKE_WIDTH));
@@ -135,7 +135,7 @@ void SWFShape_setStyleFromR(SWFShape s, SEXP style, StrokeStyle *sstyle,
     }
 
     SWFShape_setStrokeStyle(s, sstyle);
-    SWFShape_setFillStyle(s, fstyle);
+    return SWFShape_setFillStyle(s, fstyle);
 }
 
 /* Given a string of the path data and a vector of xy, draw a shape */
@@ -237,6 +237,10 @@ SEXP svg2swf(SEXP filesData, SEXP outName, SEXP size,
     SWFShape shapeInMcFrame = NULL;
     SWFDisplayItem dispItem = NULL;
     SWFMovieBlockType ublock;
+    /* SWFFillStyle needs to be destroyed explicitly */
+    SWFFillStyle fillRes= NULL;
+    /* Array to store SWFFillStyle objects */
+    SWFArray resources = NULL;
 
     StrokeStyle strokeStyle;
     FillStyle fillStyle;
@@ -255,6 +259,8 @@ SEXP svg2swf(SEXP filesData, SEXP outName, SEXP size,
     SWFMovie_setNumberOfFrames(mainMovie, nFiles);
 
     Ming_setCubicThreshold(1);
+    
+    resources = newSWFArray(100);
  
     for(i = 0; i < nFiles; i++)
     {
@@ -272,8 +278,10 @@ SEXP svg2swf(SEXP filesData, SEXP outName, SEXP size,
             xyOffset = VECTOR_ELT(path, 2);
 
             shapeInMcFrame = newSWFShape();
-            SWFShape_setStyleFromR(shapeInMcFrame, style, &strokeStyle, &fillStyle);
+            fillRes = SWFShape_setStyleFromR(shapeInMcFrame, style, &strokeStyle, &fillStyle);
+            SWFArray_append(resources, (SWFObject) fillRes);
             SWFShape_drawFromR(shapeInMcFrame, data, xyOffset);
+            SWFShape_end(shapeInMcFrame);
             SWFMovieClip_add(mcFrame, (SWFBlock) shapeInMcFrame);
         }
         SWFMovieClip_nextFrame(mcFrame);
@@ -283,7 +291,8 @@ SEXP svg2swf(SEXP filesData, SEXP outName, SEXP size,
         SWFMovie_nextFrame(mainMovie);
     }
     SWFMovie_save(mainMovie, CHAR(STRING_ELT(outName, 0)));
-    destroySWFMovie(mainMovie);
+    /* Ming_collectGarbage(); */
+    destroySWFFillStyleArray(resources);
 
     return R_NilValue;
 }

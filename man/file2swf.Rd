@@ -2,7 +2,7 @@
 \alias{file2swf}
 \title{Convert image files to SWF}
 \usage{
-file2swf(files, output, bgColor = "white", interval = 1)
+  file2swf(files, output, bgColor = "white", interval = 1)
 }
 \arguments{
   \item{files}{a character vector of input filenames}
@@ -15,7 +15,7 @@ file2swf(files, output, bgColor = "white", interval = 1)
   frames}
 }
 \value{
-  The path of the SWF file.
+  The name of the SWF file.
 }
 \description{
   This function converts a sequence of PNG/JPEG/SVG image
@@ -25,3 +25,4 @@ file2swf(files, output, bgColor = "white", interval = 1)
 \author{
   Yihui Xie <\url{http://yihui.name}>
 }
+

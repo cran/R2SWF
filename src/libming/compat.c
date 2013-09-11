@@ -18,7 +18,7 @@
 */
 
 /*
- * This file contains compat wraper for deprecated functions.
+ * This file contains compat wraper for deprecated functions. 
  * These functions will be REMOVED in future releases!
  */
 
@@ -32,16 +32,16 @@ void SWFShape_setLineStyle(SWFShape shape, unsigned short width,
 	SWFShape_setLineStyle_internal(shape, width, r, g, b, a);
 }
 
-void
+void 
 SWFShape_setLineStyle2(SWFShape shape, unsigned short width,
                        byte r, byte g, byte b, byte a,
                        int flags, float miterLimit)
 {
-	SWFShape_setLineStyle2_internal(shape, width, r, g, b, a,
+	SWFShape_setLineStyle2_internal(shape, width, r, g, b, a, 
 		flags, miterLimit);
 }
 
-void
+void 
 SWFShape_setLineStyle2filled(SWFShape shape, unsigned short width,
                        SWFFillStyle fill,
                        int flags, float miterLimit)
@@ -73,15 +73,18 @@ SWFDisplayItem SWFMovie_add(SWFMovie movie, SWFBlock block)
 
 #endif
 
+/* yixuan: SWFMovie_replace() is already defined in ming.h, not useful here,
+   and causes compiler warnings.
 #ifdef SWFMovie_replace
 #undef SWFMovie_replace
-int SWFMovie_replace(SWFMovie movie, SWFDisplayItem item, SWFBlock block)
+static int SWFMovie_replace(SWFMovie movie, SWFDisplayItem item, SWFBlock block)
 {
 	SWFMovieBlockType ublock;
 	ublock.block = block;
 	return SWFMovie_replace_internal(movie, item, ublock);
 }
 #endif
+*/
 
 char *SWFFont_getShape(SWFFont font, unsigned short c)
 {

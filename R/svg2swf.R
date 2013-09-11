@@ -2,8 +2,6 @@
 # graphics library, typically from svg() in the grDevices package (R >= 2.14.0
 # required for Windows OS), and CairoSVG() in the Cairo package.
 parseSVG = function(file.name) {
-  # Use XML package
-  library(XML)
   svgFile = xmlParse(file.name);
   # Don't forget the name space!
   newXMLNamespace(xmlRoot(svgFile), "http://www.w3.org/2000/svg", "svg");
@@ -135,10 +133,11 @@ parseSVG = function(file.name) {
 #' @param output the name of the output SWF file
 #' @param bgColor background color of the output SWF file
 #' @param interval the time interval (in seconds) between animation frames
-#' @return The path of the generated SWF file if successful.
+#' @return The name of the generated SWF file if successful.
 #' @export
 #' @author Yixuan Qiu <\email{yixuan.qiu@@cos.name}>
-#' @examples \dontrun{if(capabilities("cairo")) {
+#' @examples \dontrun{
+#' if(capabilities("cairo")) {
 #'   olddir = setwd(tempdir())
 #'   svg("Rplot%03d.svg", onefile = FALSE)
 #'   set.seed(123)
@@ -156,22 +155,28 @@ parseSVG = function(file.name) {
 #' }
 #' }
 #'
-svg2swf = function(input, output = "./movie.swf", bgColor = "white",
+svg2swf = function(input, output = "movie.swf", bgColor = "white",
                    interval = 1) {
-  if(!inherits(input, "character"))
+  # Use XML package
+  if(!require(XML))
+      stop("svg2swf() requires XML package");
+  if(!is.character(input))
     stop("'input' must be a character vector naming the input SVG files");
 
   bg = col2rgb(bgColor, alpha = FALSE);
   bg = as.integer(bg);
 
+  if(!all(file.exists(input))) stop("one or more input files do not exist");
+  
   filesData = lapply(input, parseSVG);
   firstFile = xmlParse(input[1]);
   size = xmlAttrs(xmlRoot(firstFile))["viewBox"];
   size = as.numeric(unlist(strsplit(size, " ")));
 
-  .Call("svg2swf", filesData, as.character(output), size,
+  outfile = normalizePath(output, mustWork = FALSE);
+  .Call("svg2swf", filesData, outfile, size,
         bg, as.numeric(interval), PACKAGE = "R2SWF");
 
-  message("SWF file created at ", normalizePath(output));
+  message("SWF file created at ", outfile);
   invisible(output);
 }
