@@ -1,15 +1,8 @@
-ZLIBINC = ../zlib
-ZLIBLIB = ../zlib
-ZLIB = $(ZLIBLIB)/libz.a
+ZLIBINC = ../include
 
-LIBPNGINC = ../libpng
-LIBPNGLIB = ../libpng
-LIBPNG = $(LIBPNGLIB)/libpng.a
+LIBPNGINC = ../include
 
-FTCONFINC = ../freetype/config
-FTINC = ../freetype/include
-FTLIB = ../freetype
-FT = $(FTLIB)/libfreetype.a
+FTINC = ../include
 
 CP = cp -fp
 RM = rm -f
@@ -44,18 +37,18 @@ OBJS = blocklist.o compat.o displaylist.o fill.o font_util.o \
 	position.o shape_cubic.o shape_util.o text_util.o
 
 
-.PHONY: actcmp blocks all clean
+.PHONY: actcmp blks all clean
 
 all: libming.a
 
-libming.a: actcmp blocks $(OBJS)
+libming.a: actcmp blks $(OBJS)
 	@$(RM) $@
 	$(AR_RC) $@ $(ACTCMP_OBJS) $(BLOCKS_OBJS) $(OBJS)
 
 actcmp:
 	cd actioncompiler && $(MAKE) all CC="$(CC)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
 
-blocks:
+blks:
 	cd blocks && $(MAKE) all CC="$(CC)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
 
 .c.o:

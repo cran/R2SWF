@@ -161,38 +161,44 @@ list.fonts = function()
 #' @author Yixuan Qiu <\url{http://yixuan.cos.name/}>
 #' 
 #' @examples \dontrun{
-#' # Example: download the font file of WenQuanYi Micro Hei,
-#' #          add it to SWF device, and use it to draw text in swf()
-#' # WenQuanYi Micro Hei is an open source and high quality Chinese (and CJKV) font
-#' wd = setwd(tempdir());
-#' ft.url = "http://sourceforge.net/projects/wqy/files/wqy-microhei";
+#' ## Example: download the font file of WenQuanYi Micro Hei,
+#' ##          add it to SWF device, and use it to draw text in swf().
+#' ##          WenQuanYi Micro Hei is an open source and high quality
+#' ##          Chinese (and CJKV) font.
+#' 
+#' wd = setwd(tempdir())
+#' ft.url = "http://sourceforge.net/projects/wqy/files/wqy-microhei"
 #' ft.url = paste(ft.url, "0.2.0-beta/wqy-microhei-0.2.0-beta.tar.gz",
-#'                sep = "/");
-#' download.file(ft.url, basename(ft.url));
-#' # Extract it into R2SWF/fonts and add the directory to search path
-#' ft.dir = system.file("fonts", package = "R2SWF");
-#' untar(basename(ft.url), exdir = ft.dir, compressed = "gzip");
-#' font.paths(file.path(ft.dir, "wqy-microhei"));
-#' # Register this font file and assign the family name "wqy".
-#' # Other font faces will be the same with regular by default
-#' add.fonts("wqy", regular = "wqy-microhei.ttc");
+#'                sep = "/")
+#' download.file(ft.url, basename(ft.url))
+#'
+#' ## Extract and add the directory to search path
+#' untar(basename(ft.url), compressed = "gzip")
+#' font.paths("wqy-microhei")
+#'
+#' ## Register this font file and assign the family name "wqy"
+#' ## Other font faces will be the same with regular by default
+#' add.fonts("wqy", regular = "wqy-microhei.ttc")
 #' 
-#' # A more concise way to add font is using absolute path,
-#' # without calling font.paths()
-#' # add.fonts("wqy", file.path(ft.dir, "wqy-microhei/wqy-microhei.ttc"));
+#' ## A more concise way to add font is using absolute path,
+#' ## without calling font.paths()
+#' # add.fonts("wqy", "wqy-microhei/wqy-microhei.ttc")
 #' 
-#' # List available font families
-#' list.fonts();
-#' # Now it shows that we can use the family "wqy" in swf()
-#' swf("testfont.swf");
-#' # Select font family globally
-#' op = par(family = "serif", font.lab = 2);
-#' # Inline selecting font
-#' plot(1, type = "n");
-#' text(1, 1, intToUtf8(c(20013, 25991)), family = "wqy", font = 1, cex = 2);
-#' dev.off();
-#' swf2html("testfont.swf");
-#' setwd(wd);
+#' ## List available font families
+#' list.fonts()
+#'
+#' ## Now it shows that we can use the family "wqy" in swf()
+#' swf("testfont.swf")
+#'
+#' ## Select font family globally
+#' op = par(family = "serif", font.lab = 2)
+#' ## Inline selecting font
+#' plot(1, type = "n")
+#' text(1, 1, intToUtf8(c(20013, 25991)), family = "wqy", font = 1, cex = 2)
+#'
+#' dev.off()
+#' swf2html("testfont.swf")
+#' setwd(wd)
 #' }
 #' 
 add.fonts = function(family,
@@ -246,20 +252,20 @@ add.fonts = function(family,
 {
     packageStartupMessage("Loading fonts...");
 
-    sans.r = system.file("fonts", "Lato-Reg.ttf", package = "R2SWF");
-    sans.b = system.file("fonts", "Lato-Bol.ttf", package = "R2SWF");
-    sans.i = system.file("fonts", "Lato-RegIta.ttf", package = "R2SWF");
-    sans.bi = system.file("fonts", "Lato-BolIta.ttf", package = "R2SWF");
+    sans.r = system.file("fonts", "LiberationSans-Regular.ttf", package = "R2SWF");
+    sans.b = system.file("fonts", "LiberationSans-Bold.ttf", package = "R2SWF");
+    sans.i = system.file("fonts", "LiberationSans-Italic.ttf", package = "R2SWF");
+    sans.bi = system.file("fonts", "LiberationSans-BoldItalic.ttf", package = "R2SWF");
     
-    serif.r = system.file("fonts", "VeraSerif.ttf", package = "R2SWF");
-    serif.b = system.file("fonts", "VeraSerif-Bold.ttf", package = "R2SWF");
-    serif.i = system.file("fonts", "DroidSerif-Italic.ttf", package = "R2SWF");
-    serif.bi = system.file("fonts", "DroidSerif-BoldItalic.ttf", package = "R2SWF");
+    serif.r = system.file("fonts", "LiberationSerif-Regular.ttf", package = "R2SWF");
+    serif.b = system.file("fonts", "LiberationSerif-Bold.ttf", package = "R2SWF");
+    serif.i = system.file("fonts", "LiberationSerif-Italic.ttf", package = "R2SWF");
+    serif.bi = system.file("fonts", "LiberationSerif-BoldItalic.ttf", package = "R2SWF");
     
-    mono.r = system.file("fonts", "VeraMono.ttf", package = "R2SWF");
-    mono.b = system.file("fonts", "VeraMoBd.ttf", package = "R2SWF");
-    mono.i = system.file("fonts", "VeraMoIt.ttf", package = "R2SWF");
-    mono.bi = system.file("fonts", "VeraMoBI.ttf", package = "R2SWF");
+    mono.r = system.file("fonts", "LiberationMono-Regular.ttf", package = "R2SWF");
+    mono.b = system.file("fonts", "LiberationMono-Bold.ttf", package = "R2SWF");
+    mono.i = system.file("fonts", "LiberationMono-Italic.ttf", package = "R2SWF");
+    mono.bi = system.file("fonts", "LiberationMono-BoldItalic.ttf", package = "R2SWF");
     
     add.fonts("sans", sans.r, sans.b, sans.i, sans.bi, NULL);
     add.fonts("serif", serif.r, serif.b, serif.i, serif.bi, NULL);
