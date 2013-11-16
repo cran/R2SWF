@@ -1,7 +1,7 @@
-fe5cd1ee35351969b967127c99e53f76 *DESCRIPTION
+04937f3346333ca63d989b6b09c38637 *DESCRIPTION
 7bde4f65978f6cd62419bb9c2e9ec63d *NAMESPACE
-a4079ef1a92b3b466041b4175501ba81 *NEWS
-a5665690f10efcc528ed2a747bd2b589 *R/font.R
+a0520a8e6a0d711276c8e8b70137d396 *NEWS
+cad555522638aec2edf7017f86cf3a76 *R/font.R
 5c9083cb51715b7c1e45237a9b5b88b8 *R/svg2swf.R
 cb07fe442e6c7b579f4701dc3b8fe7b2 *R/swf2html.R
 55e6b98b50948260bbb92c23d4aedb61 *R/swfDevice.R
@@ -9,7 +9,6 @@ c1e123ccff8a6ecc0652819ed45f50fc *R/xx2swf.R
 9a8d57b4657fea30898ef8b3a7d6cd99 *R/zzz.R
 01611d96474ff51f4b3ab883a1baa421 *configure
 69058868740f5207d4b4715b47990877 *configure.ac
-d75876ace3d5456c139df504656036b0 *configure.win
 fdf6313c0066521c9033e912292f8241 *inst/AUTHORS
 72afa66a6b02fda91afe0a3d82cecdee *inst/COPYRIGHTS
 79de6eec3385446c9765e1d0fe612098 *inst/fonts/AUTHORS
@@ -36,7 +35,7 @@ ae30156c5fb2001d8f85ad57463da506 *man/image2swf.Rd
 eb1a35a45dd413ea0f372a3a827b4c3c *man/swf.Rd
 120f0fc067646cb20f2c065744e8dc86 *man/swf2html.Rd
 3f1d6fee3ff163d157e0f7c265b19039 *src/Makevars.in
-82422b31dca044b2e2cf0240a1f7c555 *src/Makevars.win
+3687f6c7e6e57a0f4a65263b3a6f40d7 *src/Makevars.win
 8ae34df0abde0f9de5e67ee98204c10a *src/R2SWF-win.def
 8a20b25ac3f2aec16bafb3459c664b95 *src/image2swf.c
 dc081931b4f73044260642d0a9268254 *src/libming/AUTHORS
@@ -196,7 +195,7 @@ de3fb003105b5eeec7c84c0b2059fc79 *src/libming/text_util.h
 3c0ba18f049710706584e4fefbe36447 *src/svg2swf.c
 bdecfbcf189c350d12a1305767015e2a *src/swfArray.c
 ee508f076a71112f8668cb683372f6e3 *src/swfArray.h
-ab423fabb6280f74812f10f094e69748 *src/swfDevice.c
+4943eec3518d5d7a3ec80a2e8387afda *src/swfDevice.c
 eac5ac2fd42d4b98548fafc567c9142f *src/swfDevice.h
 dc4045c657694ad3e554b6e8f116c256 *src/swfFont.c
 8e4922b4213df7410c34c18caddc49a4 *src/swfFont.h
