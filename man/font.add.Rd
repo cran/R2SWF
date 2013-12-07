@@ -1,7 +1,11 @@
-\name{add.fonts}
+\name{font.add}
 \alias{add.fonts}
+\alias{font.add}
 \title{Add new font families for SWF device}
 \usage{
+  font.add(family, regular, bold = NULL, italic = NULL,
+    bolditalic = NULL, symbol = NULL)
+
   add.fonts(family, regular, bold = NULL, italic = NULL,
     bolditalic = NULL, symbol = NULL)
 }
@@ -28,6 +32,10 @@
   This function registers new font families that can be
   used by SWF device. Currently supported formats are
   ttf/ttc fonts.
+  
+  \code{add.fonts} is the old name of
+  \code{font.add} and should \bold{NOT} be used in any new
+  code.
 }
 \details{
   In R graphics device, there are two parameters combined
@@ -44,7 +52,7 @@
   In SWF device, there are three default font families,
   sans, serif and mono, along with those 5 font faces, that
   can be used immediately. If you want to use other font
-  families, you could call \code{add.fonts()} to register
+  families, you could call \code{font.add()} to register
   new fonts. Notice that the \code{family} argument in this
   function can be an arbitrary string which doesn't need to
   be the real font name. You will use the specified family
@@ -79,14 +87,14 @@ font.paths("wqy-microhei")
 
 ## Register this font file and assign the family name "wqy"
 ## Other font faces will be the same with regular by default
-add.fonts("wqy", regular = "wqy-microhei.ttc")
+font.add("wqy", regular = "wqy-microhei.ttc")
 
-## A more concise way to add font is using absolute path,
+## A more concise way to add font is to give the path directly,
 ## without calling font.paths()
-# add.fonts("wqy", "wqy-microhei/wqy-microhei.ttc")
+# font.add("wqy", "wqy-microhei/wqy-microhei.ttc")
 
 ## List available font families
-list.fonts()
+font.families()
 
 ## Now it shows that we can use the family "wqy" in swf()
 swf("testfont.swf")
