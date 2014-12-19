@@ -1,8 +1,18 @@
+    	  CHANGES IN R2SWF VERSION 0.8-2
+
+BUG FIXES
+
+    o Fix a misuse of abs() in the C code, thanks to Prof. Ripley
+
+
+
+
+
     	  CHANGES IN R2SWF VERSION 0.8-1
 
 BUG FIXES
 
-    o Fix a memory bug detected by valgrind
+    o Fix a memory bug detected by valgrind, thanks to Prof. Ripley
 
 
 

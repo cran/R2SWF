@@ -1,6 +1,6 @@
-4683b1611ae42713d9c9134812af9c0c *DESCRIPTION
+88744bb9b77dc645896f9956c9f21190 *DESCRIPTION
 0b463486e3a20e976178f46e024f9ded *NAMESPACE
-e20d8e21ad3ca2f719ee15471820ca6b *NEWS
+0565fb19e12e5ef48263d3294cd04dfc *NEWS
 72ae180c89a457b87d9bd9c29d12090d *R/svg2swf.R
 9453fbc6e8b6affacb0db65c3c22d7de *R/swf2html.R
 ff86b34f9365315620b10f9536f55ce2 *R/swfDevice.R
@@ -168,7 +168,7 @@ de2bc8462cd6a4432969ea9af68cb535 *src/libming/position.c
 c93fcf4628883dd50b669eeaf7283f0b *src/libming/position.h
 9e4f090d3cb1c17d62141a66d1665812 *src/libming/shape_cubic.c
 8ba434377e4ba7fea81927e1fa9cab92 *src/libming/shape_cubic.h
-855b93ed5747e6b1998f795dca1d1a59 *src/libming/shape_util.c
+c37b7898a9023ab7b9ce49a763a1472c *src/libming/shape_util.c
 63c33f07bf256b5783a9a7790641b849 *src/libming/shape_util.h
 473eee8c07e7d761a889a5179d3e0b0f *src/libming/text_util.c
 de3fb003105b5eeec7c84c0b2059fc79 *src/libming/text_util.h
