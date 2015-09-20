@@ -1,6 +1,5 @@
-81d1d5a084babe10307061550641b020 *DESCRIPTION
-0b463486e3a20e976178f46e024f9ded *NAMESPACE
-d4c6a2baba472f1c7684df107260c953 *NEWS
+bce626ca1b6abc92f2127b0c4e9c9516 *DESCRIPTION
+4cba4c80cfaceae9c4c06470c181c18f *NAMESPACE
 04cb5fb64aeafe2e174c9f8922f90011 *R/svg2swf.R
 9453fbc6e8b6affacb0db65c3c22d7de *R/swf2html.R
 ff86b34f9365315620b10f9536f55ce2 *R/swfDevice.R
@@ -12,12 +11,13 @@ c1e123ccff8a6ecc0652819ed45f50fc *R/xx2swf.R
 68b329da9893e34099c7d8ad5cb9c940 *configure.win
 8fc9b5222410ae7b5c2131f95e46946b *inst/AUTHORS
 5dcdb0e1d56c7a183b0e47fdd9f97a74 *inst/COPYRIGHTS
-ecd6ae4f288ff710c1db7b097d76741c *man/dev2swf.Rd
-d7b62ef7e1a6ef02f30d2d97a0f3b3d9 *man/file2swf.Rd
-12b00d7e44d88840724f87814604ea40 *man/image2swf.Rd
-b2b36a231008c6010d9640f0e0f7be95 *man/svg2swf.Rd
-218fb60ea370bdaefa7e67557f2c31ff *man/swf.Rd
-d30281ce287a74e1862c2c02d40e94be *man/swf2html.Rd
+4f708d65092631851f745648d1aec6cf *inst/NEWS.Rd
+8cf571654020d86c03147647dc7d88ce *man/dev2swf.Rd
+38f5abad6e49d6f4723e20bf303e91fb *man/file2swf.Rd
+874c5082ea7da22c84a8e2e02e8e251d *man/image2swf.Rd
+70e67b2cef17d63fa4f287d993f37f7f *man/svg2swf.Rd
+281a541069ec7a56e3f6ec455f065981 *man/swf.Rd
+b1866774ca2fcf5ca6d14d3769abcd09 *man/swf2html.Rd
 3f1d6fee3ff163d157e0f7c265b19039 *src/Makevars.in
 0b0c1faa9e300a545cc605d97a8821bb *src/Makevars.win
 e9d42e58ffb815c2d7d2554c4e7b0e5f *src/R2SWF-win.def
@@ -182,7 +182,7 @@ ee508f076a71112f8668cb683372f6e3 *src/swfArray.h
 7741576b7d8f94595cd8cbd9fd0a74a8 *src/swfDevice.c
 0dc00fdbf2ae33f164117dd1175ae960 *src/swfDevice.h
 3e723a20b0a634ce910d145376d3b275 *src/swfFont.c
-835c34155c3b2213fecb2117381494f2 *src/swfFont.h
+9de1568f016577cf15d4b0c207732352 *src/swfFont.h
 e67641a2adea5928cc058f4c515eb799 *src/swfInit.c
 b62cd4a90455fc984a40cf1b32d3a585 *src/swfText.c
 f0cfdbf9785078c53eee029b0737337d *src/swfText.h
