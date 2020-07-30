@@ -1,4 +1,4 @@
-d0d80fd9d2e4875cc1154e6200d24859 *DESCRIPTION
+a54e3381763d7281da3fc6886edb4ba2 *DESCRIPTION
 4cba4c80cfaceae9c4c06470c181c18f *NAMESPACE
 6358023aa988786f00b508c8227229f4 *R/svg2swf.R
 4f626dea2a9301ff3e31d0006930765d *R/swf2html.R
@@ -12,7 +12,7 @@ d0d80fd9d2e4875cc1154e6200d24859 *DESCRIPTION
 68b329da9893e34099c7d8ad5cb9c940 *configure.win
 8fc9b5222410ae7b5c2131f95e46946b *inst/AUTHORS
 5dcdb0e1d56c7a183b0e47fdd9f97a74 *inst/COPYRIGHTS
-87cc6a9862e1237125418524c67f5a1c *inst/NEWS.Rd
+49b54f05596fba33e258f899484f063d *inst/NEWS.Rd
 4bebfa4a0b6847483eca308a1f19f81c *man/dev2swf.Rd
 5c919c4d032e90cd2ec772384c87c91a *man/file2swf.Rd
 67763cfe8088bff9d7633bc7d8640d28 *man/image2swf.Rd
@@ -181,8 +181,8 @@ de3fb003105b5eeec7c84c0b2059fc79 *src/libming/text_util.h
 35f0c997cd33bf639304864c58b71f0b *src/svg2swf.c
 bdecfbcf189c350d12a1305767015e2a *src/swfArray.c
 ee508f076a71112f8668cb683372f6e3 *src/swfArray.h
-7741576b7d8f94595cd8cbd9fd0a74a8 *src/swfDevice.c
-0dc00fdbf2ae33f164117dd1175ae960 *src/swfDevice.h
+bf1ad56fe48889cc837cb598a252ae31 *src/swfDevice.c
+08c06c89dc1dc5ed88d3fad4496049ff *src/swfDevice.h
 be308bec5ad116fe9687ee1d06b38ef8 *src/swfFont.c
 9de1568f016577cf15d4b0c207732352 *src/swfFont.h
 e67641a2adea5928cc058f4c515eb799 *src/swfInit.c

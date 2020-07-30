@@ -174,7 +174,16 @@ Rboolean swfSetup(pDevDesc dev, const char *filename,
     dev->haveRaster = 1;             /* 1 = no, 2 = yes, 3 = except for missing values */
     dev->haveCapture = 1;            /* 1 = no, 2 = yes */
     dev->haveLocator = 1;            /* 1 = no, 2 = yes */
-    
+#if R_GE_version >= 13
+    dev->setPattern      = swfSetPattern;
+    dev->releasePattern  = swfReleasePattern;
+    dev->setClipPath     = swfSetClipPath;
+    dev->releaseClipPath = swfReleaseClipPath;
+    dev->setMask         = swfSetMask;
+    dev->releaseMask     = swfReleaseMask;
+
+    dev->deviceVersion = R_GE_definitions;
+#endif
     return TRUE;
 }
 
@@ -829,3 +838,53 @@ void swfClose(pDevDesc dd)
     free(swfInfo);
 }
 
+
+SEXP swfSetPattern(SEXP pattern, pDevDesc dd)
+{
+#ifdef SWF_DEBUG
+    Rprintf("setPattern called\n");
+#endif
+    return R_NilValue;
+}
+
+
+void swfReleasePattern(SEXP ref, pDevDesc dd)
+{
+#ifdef SWF_DEBUG
+    Rprintf("releasePattern called\n");
+#endif
+}
+
+
+SEXP swfSetClipPath(SEXP path, SEXP ref, pDevDesc dd)
+{
+#ifdef SWF_DEBUG
+    Rprintf("setClipPath called\n");
+#endif
+    return R_NilValue;
+}
+
+
+void swfReleaseClipPath(SEXP ref, pDevDesc dd)
+{
+#ifdef SWF_DEBUG
+    Rprintf("releaseClipPath called\n");
+#endif
+}
+
+
+SEXP swfSetMask(SEXP path, SEXP ref, pDevDesc dd)
+{
+#ifdef SWF_DEBUG
+    Rprintf("setMask called\n");
+#endif
+    return R_NilValue;
+}
+
+
+void swfReleaseMask(SEXP ref, pDevDesc dd)
+{
+#ifdef SWF_DEBUG
+    Rprintf("releaseMask called\n");
+#endif
+}
