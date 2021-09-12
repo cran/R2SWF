@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{News for Package "R2SWF"}
 
+\section{Changes in R2SWF version 0.9-6}{
+  \subsection{BUG FIXES}{
+    \itemize{
+      \item Fixed the configure script, thanks to Prof. Brian Ripley.
+      \item Fixed the issue of not exporting the initialization function on Windows.
+      \item Fixed various compiler warnings.
+    }
+  }
+}
+
 \section{Changes in R2SWF version 0.9-5}{
   \subsection{BUG FIXES}{
     \itemize{

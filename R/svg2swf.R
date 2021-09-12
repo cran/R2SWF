@@ -134,7 +134,8 @@ parseSVG = function(file.name)
 #' convert them into a Flash file (.swf).
 #'
 #' This function uses the XML package in R and a subset of librsvg
-#' (\url{http://librsvg.sourceforge.net/}) to parse the SVG file, and
+#' (\url{https://wiki.gnome.org/action/show/Projects/LibRsvg})
+#' to parse the SVG file, and
 #' uses the Ming library (\url{http://www.libming.org/}) to
 #' implement the conversion. Currently this function supports SVG files
 #' created by \code{\link[grDevices]{svg}()} in the \pkg{grDevices}
@@ -190,8 +191,7 @@ svg2swf = function(input, output = "movie.swf", bgColor = "white", interval = 1)
     size = as.numeric(unlist(strsplit(size, " ")));
     
     outfile = normalizePath(output, mustWork = FALSE);
-    .Call("svg2swf", filesData, outfile, size,
-          bg, as.numeric(interval), PACKAGE = "R2SWF");
+    .Call(svg2swf_c, filesData, outfile, size, bg, as.numeric(interval));
     
     message("SWF file created at ", outfile);
     invisible(output);
