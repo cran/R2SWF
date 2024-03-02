@@ -1,4 +1,4 @@
-65549bfb599837ae5712f9ef56ba4ad8 *DESCRIPTION
+769efb71f73a1d02901d0075e848eeb4 *DESCRIPTION
 a2c21b52168954b3167330ad75f36b47 *NAMESPACE
 1f4c74a4f5873d2ea7ddeb304235ef79 *R/svg2swf.R
 4f626dea2a9301ff3e31d0006930765d *R/swf2html.R
@@ -12,7 +12,7 @@ eab4bf097c2187fbd121a89440d4cb38 *configure
 68b329da9893e34099c7d8ad5cb9c940 *configure.win
 8fc9b5222410ae7b5c2131f95e46946b *inst/AUTHORS
 5dcdb0e1d56c7a183b0e47fdd9f97a74 *inst/COPYRIGHTS
-9478a025012ecc65486bc5f7abe72eca *inst/NEWS.Rd
+e86942e1014f68f115f05126dce0ee16 *inst/NEWS.Rd
 51be08a9ca7cb09b01d31e62af537e6d *man/dev2swf.Rd
 5c919c4d032e90cd2ec772384c87c91a *man/file2swf.Rd
 938a17956c1594749bc3f205d2519689 *man/image2swf.Rd
@@ -20,7 +20,7 @@ eab4bf097c2187fbd121a89440d4cb38 *configure
 3e91a0f8fd0f21f9d5a90ce18afecbb9 *man/swf.Rd
 1309a82bfc6a5c240544449777d8938e *man/swf2html.Rd
 3f1d6fee3ff163d157e0f7c265b19039 *src/Makevars.in
-093d33391e10421eb8a64ad54e8fe3e9 *src/Makevars.ucrt
+5e040dfa70f5ffa4fb23f99144b002e1 *src/Makevars.ucrt
 e6bcd809a2942013ed14f8c735b45059 *src/Makevars.win
 841d2c54940fe4328e281ac6394a68a8 *src/R2SWF-win.def
 5ca81de4609625bcdc582051d75e4220 *src/image2swf.c
